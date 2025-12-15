@@ -2,16 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>California Park Accessibility</title>
+  <title>California Park Accessibility Analysis</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      max-width: 900px;
+      max-width: 1000px;
       margin: 40px auto;
       line-height: 1.6;
     }
-    h1, h2 {
+    h1, h2, h3 {
       color: #2c3e50;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      border: 1px solid #ccc;
+      margin-bottom: 20px;
     }
     a {
       color: #0066cc;
@@ -20,62 +26,135 @@
     a:hover {
       text-decoration: underline;
     }
-    ul {
-      margin-left: 20px;
-    }
   </style>
 </head>
 <body>
 
-<h1>California Park Accessibility Analysis</h1>
+<h1>Accessibility of California State and National Parks</h1>
 
 <p>
-This project analyzes accessibility to California state and national parks using
-traffic-based drivability metrics, pedestrian isochrones, and Census demographic data.
-All maps were produced using Python, GeoPandas, OSMnx, and Folium.
+<strong>Name:</strong> YOUR NAME<br>
+<strong>Course:</strong> GEOG 595 – Command-Line GIS<br>
+<strong>Term:</strong> Fall 2025
 </p>
 
+<hr>
+
+<h2>Project Overview</h2>
+<p>
+This project examines how accessible California’s state and national parks are
+using both automobile and pedestrian travel metrics. Accessibility is measured
+using a traffic-weighted drivability score and walking-time isochrones derived
+from OpenStreetMap pedestrian networks. Demographic characteristics of
+populations within walking distance of parks are summarized using U.S. Census
+American Community Survey (ACS) tract-level data.
+</p>
+
+<hr>
+
+<h2>Data Sources and Preparation</h2>
+
+<h3>Transportation and Park Data</h3>
+<ul>
+  <li>
+    <strong>California Annual Average Daily Traffic (AADT):</strong><br>
+    Obtained from <em>gis.data.ca.gov</em>, prepared by the California Department
+    of Transportation (Caltrans). Data were originally provided as line and point
+    geometries in GeoJSON format and represent recent traffic counts on major
+    roadways.
+  </li>
+  <li>
+    <strong>California State Park Boundaries:</strong><br>
+    Downloaded from <em>parks.ca.gov</em>, originally provided as a shapefile.
+    Boundaries were reprojected and clipped to the California state boundary.
+  </li>
+  <li>
+    <strong>National Park Service Points of Interest:</strong><br>
+    Provided by the National Park Service as a GeoJSON dataset. Only visitor
+    centers were retained to represent meaningful park access points.
+  </li>
+</ul>
+
+<h3>Census Data</h3>
+<ul>
+  <li>
+    <strong>U.S. Census Tracts (2020):</strong><br>
+    Downloaded from the U.S. Census TIGER/Line files.
+  </li>
+  <li>
+    <strong>American Community Survey (ACS) 5-Year Estimates:</strong><br>
+    Population, median age, and median household income were accessed via the
+    Census API at the tract level.
+  </li>
+</ul>
+
+<h3>Data Processing and Quality Considerations</h3>
+<ul>
+  <li>All datasets were projected to a common CRS (EPSG:4326) for spatial analysis.</li>
+  <li>Spatial joins were used to associate census tracts with metropolitan areas
+      and to intersect tracts with walking isochrones.</li>
+  <li>Traffic counts were converted to numeric values and missing or invalid AADT
+      values were set to zero.</li>
+  <li>Demographic summaries within isochrones were area-weighted to account for
+      partial tract overlaps.</li>
+  <li>ACS uncertainty was addressed by avoiding variables with high coefficients
+      of variation and symbolizing missing data appropriately.</li>
+</ul>
+
+<hr>
+
+<h2>Static Maps</h2>
+
+<h3>State Park Drivability</h3>
+<img src="state_park_drivability.png" alt="State Park Drivability Map">
+<p>
+This map shows a traffic-weighted drivability score for California state parks.
+The score is calculated using an inverse-distance weighted average of nearby
+AADT values, representing relative ease of automobile access.
+</p>
+
+<h3>National Park Drivability</h3>
+<img src="nat_park_drivability.png" alt="National Park Drivability Map">
+<p>
+This map applies the same drivability metric to national park visitor centers,
+highlighting differences in accessibility between metropolitan and remote areas.
+</p>
+
+<hr>
+
 <h2>Interactive Maps</h2>
+
+<h3>State and National Park Drivability (Interactive)</h3>
 <ul>
   <li>
     <a href="state_park_drivability.html" target="_blank">
-      State Park Drivability (AADT-weighted)
+      Interactive State Park Drivability Map
     </a>
   </li>
   <li>
     <a href="nat_park_drivability.html" target="_blank">
-      National Park Drivability (AADT-weighted)
-    </a>
-  </li>
-  <li>
-    <a href="isochrone_demographics.html" target="_blank">
-      Walking Isochrones & Demographic Accessibility
+      Interactive National Park Drivability Map
     </a>
   </li>
 </ul>
 
-<h2>Static Figures</h2>
-<ul>
-  <li>
-    <a href="state_park_drivability.png" target="_blank">
-      State Park Drivability (Static Map)
-    </a>
-  </li>
-  <li>
-    <a href="nat_park_drivability.png" target="_blank">
-      National Park Drivability (Static Map)
-    </a>
-  </li>
-</ul>
-
-<h2>Methods Summary</h2>
+<h3>Walking Isochrones and Demographics</h3>
 <p>
-Drivability scores are calculated as an inverse-distance weighted average of
-Annual Average Daily Traffic (AADT) from nearby road segments.
-Walking accessibility is estimated using OpenStreetMap pedestrian networks,
-with isochrones generated at 15–60 minute intervals.
-Census tract demographics are spatially intersected and population-weighted
-within each isochrone.
+The map below displays pedestrian isochrones (15–60 minutes) around national
+park visitor centers. Pop-ups summarize population, median age, and median
+household income for census tracts intersecting each isochrone.
+</p>
+
+<p>
+<a href="isochrone_demographics.html" target="_blank">
+  Interactive Isochrone & Demographic Map
+</a>
+</p>
+
+<hr>
+
+<p>
+<em>All maps were created using Python, GeoPandas, OSMnx, NetworkX, and Folium.</em>
 </p>
 
 </body>
