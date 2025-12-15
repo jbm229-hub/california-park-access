@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>California Park Accessibility</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 900px;
+      margin: 40px auto;
+      line-height: 1.6;
+    }
+    h1, h2 {
+      color: #2c3e50;
+    }
+    a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    ul {
+      margin-left: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>California Park Accessibility Analysis</h1>
+
+<p>
+This project analyzes accessibility to California state and national parks using
+traffic-based drivability metrics, pedestrian isochrones, and Census demographic data.
+All maps were produced using Python, GeoPandas, OSMnx, and Folium.
+</p>
+
+<h2>Interactive Maps</h2>
+<ul>
+  <li>
+    <a href="state_park_drivability.html" target="_blank">
+      State Park Drivability (AADT-weighted)
+    </a>
+  </li>
+  <li>
+    <a href="nat_park_drivability.html" target="_blank">
+      National Park Drivability (AADT-weighted)
+    </a>
+  </li>
+  <li>
+    <a href="isochrone_demographics.html" target="_blank">
+      Walking Isochrones & Demographic Accessibility
+    </a>
+  </li>
+</ul>
+
+<h2>Static Figures</h2>
+<ul>
+  <li>
+    <a href="state_park_drivability.png" target="_blank">
+      State Park Drivability (Static Map)
+    </a>
+  </li>
+  <li>
+    <a href="nat_park_drivability.png" target="_blank">
+      National Park Drivability (Static Map)
+    </a>
+  </li>
+</ul>
+
+<h2>Methods Summary</h2>
+<p>
+Drivability scores are calculated as an inverse-distance weighted average of
+Annual Average Daily Traffic (AADT) from nearby road segments.
+Walking accessibility is estimated using OpenStreetMap pedestrian networks,
+with isochrones generated at 15–60 minute intervals.
+Census tract demographics are spatially intersected and population-weighted
+within each isochrone.
+</p>
+
+</body>
+</html>
