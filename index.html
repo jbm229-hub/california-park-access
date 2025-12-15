@@ -33,8 +33,8 @@
 <h1>Accessibility of California State and National Parks</h1>
 
 <p>
-<strong>Name:</strong> YOUR NAME<br>
-<strong>Course:</strong> GEOG 595 – Command-Line GIS<br>
+<strong>Name:</strong> Joshua Mendez<br>
+<strong>Course:</strong> 595 – Command-Line GIS<br>
 <strong>Term:</strong> Fall 2025
 </p>
 
@@ -43,9 +43,9 @@
 <h2>Project Overview</h2>
 <p>
 This project examines how accessible California’s state and national parks are
-using both automobile and pedestrian travel metrics. Accessibility is measured
+using both automobile and pedestrian travel metrics.  Accessibility is measured
 using a traffic-weighted drivability score and walking-time isochrones derived
-from OpenStreetMap pedestrian networks. Demographic characteristics of
+from OpenStreetMap pedestrian networks.  Demographic characteristics of
 populations within walking distance of parks are summarized using U.S. Census
 American Community Survey (ACS) tract-level data.
 </p>
@@ -78,7 +78,7 @@ American Community Survey (ACS) tract-level data.
 <h3>Census Data</h3>
 <ul>
   <li>
-    <strong>U.S. Census Tracts (2020):</strong><br>
+    <strong>U.S. Census Tracts (2023):</strong><br>
     Downloaded from the U.S. Census TIGER/Line files.
   </li>
   <li>
@@ -97,8 +97,6 @@ American Community Survey (ACS) tract-level data.
       values were set to zero.</li>
   <li>Demographic summaries within isochrones were area-weighted to account for
       partial tract overlaps.</li>
-  <li>ACS uncertainty was addressed by avoiding variables with high coefficients
-      of variation and symbolizing missing data appropriately.</li>
 </ul>
 
 <hr>
@@ -106,7 +104,7 @@ American Community Survey (ACS) tract-level data.
 <h2>Static Maps</h2>
 
 <h3>State Park Drivability</h3>
-<img src="state_park_drivability.png" alt="State Park Drivability Map">
+<iframe src="state_park_drivability.html" height="855" width="95%"></iframe>
 <p>
 This map shows a traffic-weighted drivability score for California state parks.
 The score is calculated using an inverse-distance weighted average of nearby
@@ -114,7 +112,7 @@ AADT values, representing relative ease of automobile access.
 </p>
 
 <h3>National Park Drivability</h3>
-<img src="nat_park_drivability.png" alt="National Park Drivability Map">
+<iframe src="nat_park_drivability.htm">
 <p>
 This map applies the same drivability metric to national park visitor centers,
 highlighting differences in accessibility between metropolitan and remote areas.
@@ -122,21 +120,7 @@ highlighting differences in accessibility between metropolitan and remote areas.
 
 <hr>
 
-<h2>Interactive Maps</h2>
-
-<h3>State and National Park Drivability (Interactive)</h3>
-<ul>
-  <li>
-    <a href="state_park_drivability.html" target="_blank">
-      Interactive State Park Drivability Map
-    </a>
-  </li>
-  <li>
-    <a href="nat_park_drivability.html" target="_blank">
-      Interactive National Park Drivability Map
-    </a>
-  </li>
-</ul>
+<h2>Interactive Map</h2>
 
 <h3>Walking Isochrones and Demographics</h3>
 <p>
@@ -146,7 +130,7 @@ household income for census tracts intersecting each isochrone.
 </p>
 
 <p>
-<a href="isochrone_demographics.html" target="_blank">
+<iframe src="isochrone_demographics.html" height="855" width="95%"></iframe>
   Interactive Isochrone & Demographic Map
 </a>
 </p>
@@ -154,7 +138,7 @@ household income for census tracts intersecting each isochrone.
 <hr>
 
 <p>
-<em>All maps were created using Python, GeoPandas, OSMnx, NetworkX, and Folium.</em>
+<em>All maps were created using Python's GeoPandas, OSMnx, NetworkX, and Folium.</em>
 </p>
 
 </body>
